@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>从零开始部署个人博客——第二步，设置博客图床</title>
+    <url>/2023/08/29/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A22/</url>
+    <content><![CDATA[<p>所谓图文并茂，我们写博客当然离不开图片，众所周知Markdown是通过本地路径来添加、查找图片的，如果我们需要在网站上发布图片显然不能用这种方法。当然我们也可以把所有图片资源文件都放在Hexo文件夹下并同步到gitlab上，但这样我们的项目就会非常臃肿难以管理，因此我们选择服务器储存的方案。别担心，现在各大厂商都提供了对象储存的云服务器，价格相当便宜，下面我们就用阿里云打搭建图床。</p>
+<span id="more"></span>
+
+<h4 id="购买对象储存（OSS）"><a href="#购买对象储存（OSS）" class="headerlink" title="购买对象储存（OSS）"></a>购买对象储存（OSS）</h4><p>登录阿里云网站，选择产品&gt;对象存储（OSS），在后续页面选择立即购买</p>
+<p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogtypora_blogimage-20230829113452168.png"></p>
+<p>按照如下设置进行购买，价格为9元&#x2F;年，还是相当便宜的</p>
+<p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829113653587.png"></p>
+<h4 id="创建bucket"><a href="#创建bucket" class="headerlink" title="创建bucket"></a>创建bucket</h4><p>完成购买后，进入工作台，选择创建OSS Bucket</p>
+<p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829113805296.png"></p>
+<p>按照如下选项设置bucket，注意读写权限必须为公共读</p>
+<p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829114105917.png"></p>
+<h4 id="创建AccessKey"><a href="#创建AccessKey" class="headerlink" title="创建AccessKey"></a>创建AccessKey</h4><p>左上角头像选择AccessKey管理，选择创建AccessKey，创建后<strong>本地保存得到的AccessKey ID和AccessKey Secret</strong></p>
+<h4 id="安装Picgo"><a href="#安装Picgo" class="headerlink" title="安装Picgo"></a>安装Picgo</h4><p>从github<a href="https://github.com/Molunerfinn/PicGo">Molunerfinn&#x2F;PicGo: :rocket:A simple &amp; beautiful tool for pictures uploading built by vue-cli-electron-builder (github.com)</a>下载并安装<strong>PicGo</strong>，这个软件可以帮助我们快速完成图片的服务器上传和url获取，安装后进入图床设置，按照如下选项进行设置</p>
+<p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogimage-20230829121024785.png" alt="image-20230829121024785"></p>
+<p>前三个选项都是之前在阿里云上设置过的内容，直接照搬即可；存储区域是可以在bucket的<strong>概览&gt;访问端口&gt;外网访问</strong>中看到注意只需要域名的前半部分；存储路径是图片上传bucket的特定定文件夹，可以方便我们管理不同文件。</p>
+<h4 id="Typora关联PicGo"><a href="#Typora关联PicGo" class="headerlink" title="Typora关联PicGo"></a>Typora关联PicGo</h4><p>现在我们可以将图片上传到PicGo上并得到图片地址，复制到Markdown中进行引用。然而Typora提供了更便捷的方案，在文件-偏好设置中按照下图进行设置：</p>
+<p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogimage-20230829141803242.png" alt="image-20230829141803242"></p>
+<p>Typora会在插入图片是自动帮我们完成上传，并调用得到的URL，现在我们的博客就可以自由的使用各种图片了~</p>
+]]></content>
+      <categories>
+        <category>从零开始搭建个人博客</category>
+      </categories>
+      <tags>
+        <tag>新手指南</tag>
+        <tag>踩坑笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>从零开始搭建个人博客——第一步，部署博客网站</title>
+    <url>/2023/08/29/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A21/</url>
+    <content><![CDATA[<p>8.28日夜，深感不能再如此颓废下去的我决定趁最近比较闲做一些科研搬砖以外的能自我提升的事。仔细想想也无外乎运动健身和内容创作，于是就决定搭一个博客网站写些文章，主要是记录学习中的踩坑日常，之后也可能会分享科研方向的相关知识。既然是第一篇博客，不如就记录一下这个个人网站的搭建过程。</p>
+<span id="more"></span>
+
+<p>搭建博客网站至少要完成以下功能：1. 建立可本地访问的个人网站 2. 将网站部署使得他人可以访问。下面我就简单写一下半个晚上速成的个人博客搭建过程。</p>
+<h3 id="创建本地网站"><a href="#创建本地网站" class="headerlink" title="创建本地网站"></a>创建本地网站</h3><p>从零开始建立一个网站无疑是一个非常复杂的工作，但当我们的目标仅仅是建立一个博客网站时这个问题就简单了许多——可以直接使用现有的博客框架。所谓博客框架，简单地说就是他人提供好了网站模板和生成工具，用户只需要撰写文章（例如Markdown文件）就可以直接生成静态网站。在这里我们选择比较主流的Hexo框架来搭建网站，这里主要参考官方网站<a href="https://hexo.io/docs/index.html">Documentation | Hexo</a></p>
+<h4 id="Hexo安装"><a href="#Hexo安装" class="headerlink" title="Hexo安装"></a>Hexo安装</h4><p>Hexo依赖于两个程序，Node.js和Git。Node.js是JavaScript在浏览器环境下的解析器，在Windows环境下从官网<a href="https://nodejs.org/en">Node.js (nodejs.org)</a>直接下载安装即可，Git则是部署代码不可缺少的工具，Git的安装稍微复杂一些，但在网上已经有非常详细的教程了，在此不在赘述。通过以下命令检查安装是否成功</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">node --version</span><br><span class="line">git --version</span><br></pre></td></tr></table></figure>
+
+<p>Node.js会同时安装包管理工具npm，之后可以直接通过以下命令安装Hexo</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
+
+<p>至此完成Hexo的安装</p>
+<h4 id="Hexo创建网站"><a href="#Hexo创建网站" class="headerlink" title="Hexo创建网站"></a>Hexo创建网站</h4><p>我们需要创建一个文件夹作为网站项目内容的根目录（例如D:\Blog），在该目录下执行<code>hexo init</code>会自动生成一个网站项目</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── _config.yml</span><br><span class="line">├── package.json</span><br><span class="line">├── scaffolds</span><br><span class="line">├── source</span><br><span class="line">|   ├── _drafts</span><br><span class="line">|   └── _posts</span><br><span class="line">└── themes</span><br></pre></td></tr></table></figure>
+
+<p>我们一般需要修改<code>_config.yml</code>中的网站配置，具体每一项属性的作用可以在官网查找，目前采用中文文档中介绍的设置，如果有坑的话再更新记录。设置后通过如下命令来生成网站：</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">hexo new &lt;title&gt; <span class="comment"># 创建新文章</span></span><br><span class="line">hexo generate <span class="comment"># 生成网站</span></span><br><span class="line">hexo server <span class="comment"># 创建本地服务器，默认为http://localhost:4000/</span></span><br></pre></td></tr></table></figure>
+
+<p>之后就可以在本地访问博客网站了，正常情况下可以看到如下的网站和文章：</p>
+<p>如果仅仅当作是个人日记，不需要在互联网上分享博客内容，至此即可。</p>
+<h3 id="Gitlab发布网站"><a href="#Gitlab发布网站" class="headerlink" title="Gitlab发布网站"></a>Gitlab发布网站</h3><p>刚刚我们已经有了一个个人博客网站，然而这个网站需要我们自己的设备作为本地服务器，并且只能通过本地端口域名访问。如果我们希望我们的博客能够在互联网环境中正常的访问浏览，我们需要将该网站进行部署（deploy）。幸运的是这一工作也不难，我们常常使用的GitHub就有GitHub Pages的功能，具体步骤如下：</p>
+<ol>
+<li>创建Github项目：在Gitlab上创建名为*<strong>username*.github.io</strong>的空项目，visibility设置为public。</li>
+<li>安装git deploy工具：<code>npm install hexo-deployer-git --save</code></li>
+<li>在<code>_config.yml</code>中设置deploy选项<br><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogimage-20230829160015520.png" alt="image-20230829160015520"><br>repo修改为自己的仓库</li>
+<li>使用<code>hexo d</code>部署网站，顺利的话此时已经可以正常访问个人网站，更进一步的我们还可以为网站购买域名，但无论如何现在你也有自己的博客网站了！之后我们每次编辑只需要<code>hexo s -g</code>在本地生成并检查，确认ok后执行<code>hexo d</code>进行部署即可。</li>
+</ol>
+<p>到这里搭建好网站我大概花了两小时左右时间，反倒是写这篇文章的时间更长。但无论如何这也是个好头，以后争取每天写写文章产出一些内容，希望能坚持下来。</p>
+]]></content>
+      <categories>
+        <category>从零开始搭建个人博客</category>
+      </categories>
+      <tags>
+        <tag>新手指南</tag>
+        <tag>踩坑笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>从零开始部署个人博客——第三步，网站界面美化</title>
+    <url>/2023/08/29/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A23/</url>
+    <content><![CDATA[<p>在上一篇文章的指导下，我们已经有了自己的博客网站，只是写作当然没问题，但是大家都知道在写代码的时候搭好环境只是折腾的开始，接下来我们就要为我们的网站进行美化设置了。</p>
+<span id="more"></span>
+
+<h3 id="设置主题"><a href="#设置主题" class="headerlink" title="设置主题"></a>设置主题</h3><p>Hexo默认的是landscape主题，一方面是不够美观，最重要的是缺少很多实用的插件以至于功能不全（例如评论区、站内搜索），因此我们需要重新设置一个更好的主题。Hexo的可选主题很多，这里用比较活跃的Next主题作为演示。Hexo的主题安装非常简单，在项目目录下运行：</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/theme<span class="literal">-next</span>/hexo<span class="literal">-theme-next</span> themes/next</span><br></pre></td></tr></table></figure>
+
+<p>完成主题安装，再修改<code>_config.yml</code>里的theme设置即可，在网站<a href="https://theme-next.iissnan.com/">NexT 使用文档 (iissnan.com)</a>中提供了详细的设置方法介绍。在<code>themes/next</code>下有主题对应的设置文件现在我们有两个配置文件了，之后用<strong>主题配置</strong>和<strong>站点配置</strong>分别称呼这两个配置文件，首先进行一下简单的主题设置：</p>
+<p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829162738329.png" alt="image-20230829162738329"></p>
+<p>主题：next提供了四种预设布局风格，随便选了一个最新的感觉还不错。</p>
+<p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829162921504.png" alt="image-20230829162921504"></p>
+<p>是不是感觉内容不够丰富？接下来我们进一步配置next主题。</p>
+<h4 id="设置菜单栏（分类、标签、搜索）"><a href="#设置菜单栏（分类、标签、搜索）" class="headerlink" title="设置菜单栏（分类、标签、搜索）"></a>设置菜单栏（分类、标签、搜索）</h4><p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829163222249.png" alt="image-20230829163222249"></p>
+<p>初始只有home和archive是打开的，我们先仿照别人的博客增加一个tags页面，在配置文件中取消tags行的注释，这样菜单栏就会显示tags选项。当然我们还需要为该选项关联对应的网站，输入<code>hexo new page tags</code>创建新的页面，在<code>source</code>文件夹下我们会得到<code>index.md</code>文件，我们修改文件开头的属性区：</p>
+<p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829164122549.png" alt="image-20230829164122549"></p>
+<p>这样Hexo就会将该页面按照tags网站进行渲染，同时我们为之前的文章增加tag：</p>
+<p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829164420773.png" alt="image-20230829164420773"></p>
+<p>类似的，我们进行分类的设置，更新后的网站如下：</p>
+<p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829164951424.png" alt="image-20230829164951424"></p>
+<p>现在我们的网站看上去更有条理了，虽然现在我们的博客只有几篇文章，但考虑到之后的内容增长，本地搜索功能也是必不可少的，终端中输入</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">npm install hexo<span class="literal">-generator-searchdb</span></span><br></pre></td></tr></table></figure>
+
+<p>安装搜索插件，在主题配置中设置local_search如下</p>
+<p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829170125648.png" alt="image-20230829170125648"></p>
+<p>在站点设置中增加一段搜索设置：</p>
+<p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829165640695.png" alt="image-20230829165640695"></p>
+<p>现在我们可以在博客中进行站内搜索：</p>
+<p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829170206069.png" alt="image-20230829170206069"></p>
+<h4 id="设置个人信息（头像、社交图片）"><a href="#设置个人信息（头像、社交图片）" class="headerlink" title="设置个人信息（头像、社交图片）"></a>设置个人信息（头像、社交图片）</h4><p>首先当然是我们的头像，在主题配置中有avatar选项：</p>
+<p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829170941214.png" alt="image-20230829170941214"></p>
+<p>将url修改为对应的文件路径即可，需要注意的是这里是相对于next主题下source文件下的路径。</p>
+<p>我们还需要在侧边栏增加一些社交网站图片和链接方便用户快速访问，在主题配置中有social选项：</p>
+<p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829171301891.png" alt="image-20230829171301891"></p>
+<p>根据需要添加自己的社交网站链接即可。</p>
+<h3 id="文章优化（评论区、显示全文）"><a href="#文章优化（评论区、显示全文）" class="headerlink" title="文章优化（评论区、显示全文）"></a>文章优化（评论区、显示全文）</h3><p>现在该优化我们的文章部分了，首先当然是评论区，我们首先需要一个评论系统，这里以Valine为例</p>
+<p>，首先我们在LeanCloud注册一个账户（国内版需要实名认证和邮箱认证），之后创建一个应用并在左侧应用凭证中获取ID和Key，填到主题配置中：</p>
+<p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829172900700.png" alt="image-20230829172900700"></p>
+<p>选项的具体功能在注释里已经写的很清楚了不再过多介绍，我的设置仅供参考。</p>
+<p>我们还需要修改我们的文章，最好是在首页只显示文章的部分内容，并提供一个链接跳转至全文阅读。NexT通过文章的摘录（description）来提供这一功能——我们既可以在文章开头自行编辑description内容，也可以在主题配置文件中开启自动生成摘要：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">auto_excerpt:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">length:</span> <span class="number">150</span></span><br></pre></td></tr></table></figure>
+
+<p>当然，最好的方法是在文章中通过<code>&lt;!-- more --&gt;</code>进行手动截断，这样可以自己调整显示的内容，也方便其他插件进行识别。</p>
+<p>现在我们的博客主页如下：</p>
+<p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829173832320.png" alt="image-20230829173832320"></p>
+<p>看上去有模有样的不是吗？我们还可以进行一些细节上的调整</p>
+<h3 id="细节（底部内容，live2d）"><a href="#细节（底部内容，live2d）" class="headerlink" title="细节（底部内容，live2d）"></a>细节（底部内容，live2d）</h3><h4 id="隐藏底部……强力驱动"><a href="#隐藏底部……强力驱动" class="headerlink" title="隐藏底部……强力驱动"></a>隐藏底部……强力驱动</h4><p>在next主题的<code>next\layout\_partials\footer.swig</code>文件中删除第五行即可。</p>
+<h4 id="二次元看板娘"><a href="#二次元看板娘" class="headerlink" title="二次元看板娘"></a>二次元看板娘</h4><p>现在的博客有点太hardcore了，不如来点二次元活跃一下气氛。Hexo提供了<a href="https://github.com/EYHN/hexo-helper-live2d/tree/master">hexo-helper-live2d</a>插件来添加live2d对象，首先安装插件</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">npm install <span class="literal">--save</span> hexo<span class="literal">-helper-live2d</span></span><br></pre></td></tr></table></figure>
+
+<p>接着修改站点配置来启动live2d</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">live2d:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">scriptFrom:</span> <span class="string">local</span></span><br><span class="line">  <span class="attr">pluginRootPath:</span> <span class="string">live2dw/</span></span><br><span class="line">  <span class="attr">pluginJsPath:</span> <span class="string">lib/</span></span><br><span class="line">  <span class="attr">pluginModelPath:</span> <span class="string">assets/</span></span><br><span class="line">  <span class="attr">tagMode:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">debug:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">model:</span></span><br><span class="line">    <span class="attr">use:</span> <span class="string">live2d-widget-model-wanko</span></span><br><span class="line">  <span class="attr">display:</span></span><br><span class="line">    <span class="attr">position:</span> <span class="string">right</span></span><br><span class="line">    <span class="attr">width:</span> <span class="number">150</span></span><br><span class="line">    <span class="attr">height:</span> <span class="number">300</span></span><br><span class="line">  <span class="attr">mobile:</span></span><br><span class="line">    <span class="attr">show:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">react:</span></span><br><span class="line">    <span class="attr">opacity:</span> <span class="number">0.7</span></span><br></pre></td></tr></table></figure>
+
+<p>接下来安装二次元看板娘，在<a href="https://github.com/xiazeyu/live2d-widget-models">xiazeyu&#x2F;live2d-widget-models: The model library for live2d-widget.js (github.com)</a>有许多可用的模型，选择自己喜欢安装即可。</p>
+<p>安装好的模型会在<code>node_modules</code>文件夹下，我们将这个文件夹拷贝到站点根目录下（可以创建一个live2d_models文件夹统一存放），修改配置文件中的&#96;&#96;&#96;model&#96;&#96;名称就完成了</p>
+<p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogimage-20230829175810612.png" alt="image-20230829175810612"></p>
+<p>二次元看板娘已经在右下角开始上班了！</p>
+<p>如果要折腾当然还有很多可以做的点（背景、音乐、动画、鼠标等等），但我感觉网站到现在这样还不错，毕竟内容才是最重要的，接下来就先写些别的文章吧。</p>
+]]></content>
+  </entry>
+</search>

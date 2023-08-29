@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="在上一篇文章的指导下，我们已经有了自己的博客网站，只是写作当然没问题，但是大家都知道在写代码的时候搭好环境只是折腾的开始，接下来我们就要为我们的网站进行美化设置了。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从零开始部署个人博客——第三步，网站界面美化">
+<meta property="og:url" content="http://example.com/2023/08/29/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A23/index.html">
+<meta property="og:site_name" content="小忍qaq的个人博客">
+<meta property="og:description" content="在上一篇文章的指导下，我们已经有了自己的博客网站，只是写作当然没问题，但是大家都知道在写代码的时候搭好环境只是折腾的开始，接下来我们就要为我们的网站进行美化设置了。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829162738329.png">
+<meta property="og:image" content="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829162921504.png">
+<meta property="og:image" content="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829163222249.png">
+<meta property="og:image" content="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829164122549.png">
+<meta property="og:image" content="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829164420773.png">
+<meta property="og:image" content="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829164951424.png">
+<meta property="og:image" content="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829170125648.png">
+<meta property="og:image" content="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829165640695.png">
+<meta property="og:image" content="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829170206069.png">
+<meta property="og:image" content="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829170941214.png">
+<meta property="og:image" content="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829171301891.png">
+<meta property="og:image" content="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829172900700.png">
+<meta property="og:image" content="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829173832320.png">
+<meta property="og:image" content="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogimage-20230829175810612.png">
+<meta property="article:published_time" content="2023-08-29T09:55:16.000Z">
+<meta property="article:modified_time" content="2023-08-29T10:00:57.676Z">
+<meta property="article:author" content="小忍qaq">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829162738329.png">
+
+<link rel="canonical" href="http://example.com/2023/08/29/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A23/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>从零开始部署个人博客——第三步，网站界面美化 | 小忍qaq的个人博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">小忍qaq的个人博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">CS科研狗/游戏王MD、影之诗一般玩家/健康模式</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/29/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A23/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/shinobu.jpg">
+      <meta itemprop="name" content="小忍qaq">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小忍qaq的个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          从零开始部署个人博客——第三步，网站界面美化
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-08-29 17:55:16 / 修改时间：18:00:57" itemprop="dateCreated datePublished" datetime="2023-08-29T17:55:16+08:00">2023-08-29</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2023/08/29/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A23/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2023/08/29/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A23/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>在上一篇文章的指导下，我们已经有了自己的博客网站，只是写作当然没问题，但是大家都知道在写代码的时候搭好环境只是折腾的开始，接下来我们就要为我们的网站进行美化设置了。</p>
+<span id="more"></span>
+
+<h3 id="设置主题"><a href="#设置主题" class="headerlink" title="设置主题"></a>设置主题</h3><p>Hexo默认的是landscape主题，一方面是不够美观，最重要的是缺少很多实用的插件以至于功能不全（例如评论区、站内搜索），因此我们需要重新设置一个更好的主题。Hexo的可选主题很多，这里用比较活跃的Next主题作为演示。Hexo的主题安装非常简单，在项目目录下运行：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/theme<span class="literal">-next</span>/hexo<span class="literal">-theme-next</span> themes/next</span><br></pre></td></tr></table></figure>
+
+<p>完成主题安装，再修改<code>_config.yml</code>里的theme设置即可，在网站<a target="_blank" rel="noopener" href="https://theme-next.iissnan.com/">NexT 使用文档 (iissnan.com)</a>中提供了详细的设置方法介绍。在<code>themes/next</code>下有主题对应的设置文件现在我们有两个配置文件了，之后用<strong>主题配置</strong>和<strong>站点配置</strong>分别称呼这两个配置文件，首先进行一下简单的主题设置：</p>
+<p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829162738329.png" alt="image-20230829162738329"></p>
+<p>主题：next提供了四种预设布局风格，随便选了一个最新的感觉还不错。</p>
+<p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829162921504.png" alt="image-20230829162921504"></p>
+<p>是不是感觉内容不够丰富？接下来我们进一步配置next主题。</p>
+<h4 id="设置菜单栏（分类、标签、搜索）"><a href="#设置菜单栏（分类、标签、搜索）" class="headerlink" title="设置菜单栏（分类、标签、搜索）"></a>设置菜单栏（分类、标签、搜索）</h4><p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829163222249.png" alt="image-20230829163222249"></p>
+<p>初始只有home和archive是打开的，我们先仿照别人的博客增加一个tags页面，在配置文件中取消tags行的注释，这样菜单栏就会显示tags选项。当然我们还需要为该选项关联对应的网站，输入<code>hexo new page tags</code>创建新的页面，在<code>source</code>文件夹下我们会得到<code>index.md</code>文件，我们修改文件开头的属性区：</p>
+<p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829164122549.png" alt="image-20230829164122549"></p>
+<p>这样Hexo就会将该页面按照tags网站进行渲染，同时我们为之前的文章增加tag：</p>
+<p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829164420773.png" alt="image-20230829164420773"></p>
+<p>类似的，我们进行分类的设置，更新后的网站如下：</p>
+<p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829164951424.png" alt="image-20230829164951424"></p>
+<p>现在我们的网站看上去更有条理了，虽然现在我们的博客只有几篇文章，但考虑到之后的内容增长，本地搜索功能也是必不可少的，终端中输入</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo<span class="literal">-generator-searchdb</span></span><br></pre></td></tr></table></figure>
+
+<p>安装搜索插件，在主题配置中设置local_search如下</p>
+<p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829170125648.png" alt="image-20230829170125648"></p>
+<p>在站点设置中增加一段搜索设置：</p>
+<p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829165640695.png" alt="image-20230829165640695"></p>
+<p>现在我们可以在博客中进行站内搜索：</p>
+<p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829170206069.png" alt="image-20230829170206069"></p>
+<h4 id="设置个人信息（头像、社交图片）"><a href="#设置个人信息（头像、社交图片）" class="headerlink" title="设置个人信息（头像、社交图片）"></a>设置个人信息（头像、社交图片）</h4><p>首先当然是我们的头像，在主题配置中有avatar选项：</p>
+<p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829170941214.png" alt="image-20230829170941214"></p>
+<p>将url修改为对应的文件路径即可，需要注意的是这里是相对于next主题下source文件下的路径。</p>
+<p>我们还需要在侧边栏增加一些社交网站图片和链接方便用户快速访问，在主题配置中有social选项：</p>
+<p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829171301891.png" alt="image-20230829171301891"></p>
+<p>根据需要添加自己的社交网站链接即可。</p>
+<h3 id="文章优化（评论区、显示全文）"><a href="#文章优化（评论区、显示全文）" class="headerlink" title="文章优化（评论区、显示全文）"></a>文章优化（评论区、显示全文）</h3><p>现在该优化我们的文章部分了，首先当然是评论区，我们首先需要一个评论系统，这里以Valine为例</p>
+<p>，首先我们在LeanCloud注册一个账户（国内版需要实名认证和邮箱认证），之后创建一个应用并在左侧应用凭证中获取ID和Key，填到主题配置中：</p>
+<p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829172900700.png" alt="image-20230829172900700"></p>
+<p>选项的具体功能在注释里已经写的很清楚了不再过多介绍，我的设置仅供参考。</p>
+<p>我们还需要修改我们的文章，最好是在首页只显示文章的部分内容，并提供一个链接跳转至全文阅读。NexT通过文章的摘录（description）来提供这一功能——我们既可以在文章开头自行编辑description内容，也可以在主题配置文件中开启自动生成摘要：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">auto_excerpt:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">length:</span> <span class="number">150</span></span><br></pre></td></tr></table></figure>
+
+<p>当然，最好的方法是在文章中通过<code>&lt;!-- more --&gt;</code>进行手动截断，这样可以自己调整显示的内容，也方便其他插件进行识别。</p>
+<p>现在我们的博客主页如下：</p>
+<p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829173832320.png" alt="image-20230829173832320"></p>
+<p>看上去有模有样的不是吗？我们还可以进行一些细节上的调整</p>
+<h3 id="细节（底部内容，live2d）"><a href="#细节（底部内容，live2d）" class="headerlink" title="细节（底部内容，live2d）"></a>细节（底部内容，live2d）</h3><h4 id="隐藏底部……强力驱动"><a href="#隐藏底部……强力驱动" class="headerlink" title="隐藏底部……强力驱动"></a>隐藏底部……强力驱动</h4><p>在next主题的<code>next\layout\_partials\footer.swig</code>文件中删除第五行即可。</p>
+<h4 id="二次元看板娘"><a href="#二次元看板娘" class="headerlink" title="二次元看板娘"></a>二次元看板娘</h4><p>现在的博客有点太hardcore了，不如来点二次元活跃一下气氛。Hexo提供了<a target="_blank" rel="noopener" href="https://github.com/EYHN/hexo-helper-live2d/tree/master">hexo-helper-live2d</a>插件来添加live2d对象，首先安装插件</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install <span class="literal">--save</span> hexo<span class="literal">-helper-live2d</span></span><br></pre></td></tr></table></figure>
+
+<p>接着修改站点配置来启动live2d</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">live2d:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">scriptFrom:</span> <span class="string">local</span></span><br><span class="line">  <span class="attr">pluginRootPath:</span> <span class="string">live2dw/</span></span><br><span class="line">  <span class="attr">pluginJsPath:</span> <span class="string">lib/</span></span><br><span class="line">  <span class="attr">pluginModelPath:</span> <span class="string">assets/</span></span><br><span class="line">  <span class="attr">tagMode:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">debug:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">model:</span></span><br><span class="line">    <span class="attr">use:</span> <span class="string">live2d-widget-model-wanko</span></span><br><span class="line">  <span class="attr">display:</span></span><br><span class="line">    <span class="attr">position:</span> <span class="string">right</span></span><br><span class="line">    <span class="attr">width:</span> <span class="number">150</span></span><br><span class="line">    <span class="attr">height:</span> <span class="number">300</span></span><br><span class="line">  <span class="attr">mobile:</span></span><br><span class="line">    <span class="attr">show:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">react:</span></span><br><span class="line">    <span class="attr">opacity:</span> <span class="number">0.7</span></span><br></pre></td></tr></table></figure>
+
+<p>接下来安装二次元看板娘，在<a target="_blank" rel="noopener" href="https://github.com/xiazeyu/live2d-widget-models">xiazeyu&#x2F;live2d-widget-models: The model library for live2d-widget.js (github.com)</a>有许多可用的模型，选择自己喜欢安装即可。</p>
+<p>安装好的模型会在<code>node_modules</code>文件夹下，我们将这个文件夹拷贝到站点根目录下（可以创建一个live2d_models文件夹统一存放），修改配置文件中的&#96;&#96;&#96;model&#96;&#96;名称就完成了</p>
+<p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogimage-20230829175810612.png" alt="image-20230829175810612"></p>
+<p>二次元看板娘已经在右下角开始上班了！</p>
+<p>如果要折腾当然还有很多可以做的点（背景、音乐、动画、鼠标等等），但我感觉网站到现在这样还不错，毕竟内容才是最重要的，接下来就先写些别的文章吧。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/08/29/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A22/" rel="prev" title="从零开始部署个人博客——第二步，设置博客图床">
+      <i class="fa fa-chevron-left"></i> 从零开始部署个人博客——第二步，设置博客图床
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E4%B8%BB%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">设置主题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E8%8F%9C%E5%8D%95%E6%A0%8F%EF%BC%88%E5%88%86%E7%B1%BB%E3%80%81%E6%A0%87%E7%AD%BE%E3%80%81%E6%90%9C%E7%B4%A2%EF%BC%89"><span class="nav-number">1.1.</span> <span class="nav-text">设置菜单栏（分类、标签、搜索）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF%EF%BC%88%E5%A4%B4%E5%83%8F%E3%80%81%E7%A4%BE%E4%BA%A4%E5%9B%BE%E7%89%87%EF%BC%89"><span class="nav-number">1.2.</span> <span class="nav-text">设置个人信息（头像、社交图片）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E7%AB%A0%E4%BC%98%E5%8C%96%EF%BC%88%E8%AF%84%E8%AE%BA%E5%8C%BA%E3%80%81%E6%98%BE%E7%A4%BA%E5%85%A8%E6%96%87%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">文章优化（评论区、显示全文）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%86%E8%8A%82%EF%BC%88%E5%BA%95%E9%83%A8%E5%86%85%E5%AE%B9%EF%BC%8Clive2d%EF%BC%89"><span class="nav-number">3.</span> <span class="nav-text">细节（底部内容，live2d）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9A%90%E8%97%8F%E5%BA%95%E9%83%A8%E2%80%A6%E2%80%A6%E5%BC%BA%E5%8A%9B%E9%A9%B1%E5%8A%A8"><span class="nav-number">3.1.</span> <span class="nav-text">隐藏底部……强力驱动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E6%AC%A1%E5%85%83%E7%9C%8B%E6%9D%BF%E5%A8%98"><span class="nav-number">3.2.</span> <span class="nav-text">二次元看板娘</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="小忍qaq"
+      src="/images/shinobu.jpg">
+  <p class="site-author-name" itemprop="name">小忍qaq</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/shinobu-qaq" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;shinobu-qaq" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/zhexipeng@zju.edu.cn" title="E-Mail → zhexipeng@zju.edu.cn"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">小忍qaq</span>
+</div>
+  <div class="powered-by">
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'dM0GxK0iazM0kBJ3cKF8m81y-gzGzoHsz',
+      appKey     : '9VpII0QVI3UkVAdY04xVvTqf',
+      placeholder: "又是美好的一天！",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300,"hOffset":-15,"vOffset":-15},"mobile":{"show":false},"react":{"opacity":0.7},"log":false});</script></body>
+</html>

@@ -17,15 +17,15 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="在上一篇文章的指导下，我们已经有了自己的博客网站，当然大家都知道在写代码的时候搭好环境只是折腾的开始，接下来我们就要为我们的网站进行基本设置了。 设置博客图床所谓图文并茂，我们写博客当然离不开图片，众所周知Markdown是通过本地路径来添加、查找图片的，如果我们需要在网站上发布图片显然不能用这种方法。当然我们也可以把所有图片资源文件都放在Hexo文件夹下并同步到gitlab上，但这样我们的项目就">
+  <meta name="description" content="所谓图文并茂，我们写博客当然离不开图片，众所周知Markdown是通过本地路径来添加、查找图片的，如果我们需要在网站上发布图片显然不能用这种方法。当然我们也可以把所有图片资源文件都放在Hexo文件夹下并同步到gitlab上，但这样我们的项目就会非常臃肿难以管理，因此我们选择服务器储存的方案。别担心，现在各大厂商都提供了对象储存的云服务器，价格相当便宜，下面我们就用阿里云打搭建图床。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="从零开始部署个人博客——第二步，博客网站基本设置">
+<meta property="og:title" content="从零开始部署个人博客——第二步，设置博客图床">
 <meta property="og:url" content="http://example.com/2023/08/29/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A22/index.html">
 <meta property="og:site_name" content="小忍qaq的个人博客">
-<meta property="og:description" content="在上一篇文章的指导下，我们已经有了自己的博客网站，当然大家都知道在写代码的时候搭好环境只是折腾的开始，接下来我们就要为我们的网站进行基本设置了。 设置博客图床所谓图文并茂，我们写博客当然离不开图片，众所周知Markdown是通过本地路径来添加、查找图片的，如果我们需要在网站上发布图片显然不能用这种方法。当然我们也可以把所有图片资源文件都放在Hexo文件夹下并同步到gitlab上，但这样我们的项目就">
+<meta property="og:description" content="所谓图文并茂，我们写博客当然离不开图片，众所周知Markdown是通过本地路径来添加、查找图片的，如果我们需要在网站上发布图片显然不能用这种方法。当然我们也可以把所有图片资源文件都放在Hexo文件夹下并同步到gitlab上，但这样我们的项目就会非常臃肿难以管理，因此我们选择服务器储存的方案。别担心，现在各大厂商都提供了对象储存的云服务器，价格相当便宜，下面我们就用阿里云打搭建图床。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogtypora_blogimage-20230829113452168.png">
 <meta property="og:image" content="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829113653587.png">
@@ -34,8 +34,10 @@
 <meta property="og:image" content="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogimage-20230829121024785.png">
 <meta property="og:image" content="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogimage-20230829141803242.png">
 <meta property="article:published_time" content="2023-08-29T02:59:34.000Z">
-<meta property="article:modified_time" content="2023-08-29T06:37:49.509Z">
+<meta property="article:modified_time" content="2023-08-29T09:58:05.631Z">
 <meta property="article:author" content="小忍qaq">
+<meta property="article:tag" content="新手指南">
+<meta property="article:tag" content="踩坑笔记">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogtypora_blogimage-20230829113452168.png">
 
@@ -52,7 +54,7 @@
   };
 </script>
 
-  <title>从零开始部署个人博客——第二步，博客网站基本设置 | 小忍qaq的个人博客</title>
+  <title>从零开始部署个人博客——第二步，设置博客图床 | 小忍qaq的个人博客</title>
   
 
 
@@ -111,6 +113,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -130,11 +133,48 @@
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
     </header>
@@ -161,7 +201,7 @@
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/29/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A22/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/shinobu.jpg">
       <meta itemprop="name" content="小忍qaq">
       <meta itemprop="description" content="">
     </span>
@@ -171,7 +211,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          从零开始部署个人博客——第二步，博客网站基本设置
+          从零开始部署个人博客——第二步，设置博客图床
         </h1>
 
         <div class="post-meta">
@@ -182,10 +222,33 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2023-08-29 10:59:34 / 修改时间：14:37:49" itemprop="dateCreated datePublished" datetime="2023-08-29T10:59:34+08:00">2023-08-29</time>
+              <time title="创建时间：2023-08-29 10:59:34 / 修改时间：17:58:05" itemprop="dateCreated datePublished" datetime="2023-08-29T10:59:34+08:00">2023-08-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" itemprop="url" rel="index"><span itemprop="name">从零开始搭建个人博客</span></a>
+                </span>
             </span>
 
           
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2023/08/29/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A22/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2023/08/29/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A22/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 
         </div>
       </header>
@@ -196,8 +259,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>在上一篇文章的指导下，我们已经有了自己的博客网站，当然大家都知道在写代码的时候搭好环境只是折腾的开始，接下来我们就要为我们的网站进行基本设置了。</p>
-<h3 id="设置博客图床"><a href="#设置博客图床" class="headerlink" title="设置博客图床"></a>设置博客图床</h3><p>所谓图文并茂，我们写博客当然离不开图片，众所周知Markdown是通过本地路径来添加、查找图片的，如果我们需要在网站上发布图片显然不能用这种方法。当然我们也可以把所有图片资源文件都放在Hexo文件夹下并同步到gitlab上，但这样我们的项目就会非常臃肿难以管理，因此我们选择服务器储存的方案。别担心，现在各大厂商都提供了对象储存的云服务器，价格相当便宜，下面我们就用阿里云打搭建图床。</p>
+        <p>所谓图文并茂，我们写博客当然离不开图片，众所周知Markdown是通过本地路径来添加、查找图片的，如果我们需要在网站上发布图片显然不能用这种方法。当然我们也可以把所有图片资源文件都放在Hexo文件夹下并同步到gitlab上，但这样我们的项目就会非常臃肿难以管理，因此我们选择服务器储存的方案。别担心，现在各大厂商都提供了对象储存的云服务器，价格相当便宜，下面我们就用阿里云打搭建图床。</p>
+<span id="more"></span>
+
 <h4 id="购买对象储存（OSS）"><a href="#购买对象储存（OSS）" class="headerlink" title="购买对象储存（OSS）"></a>购买对象储存（OSS）</h4><p>登录阿里云网站，选择产品&gt;对象存储（OSS），在后续页面选择立即购买</p>
 <p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogtypora_blogimage-20230829113452168.png"></p>
 <p>按照如下设置进行购买，价格为9元&#x2F;年，还是相当便宜的</p>
@@ -213,10 +277,6 @@
 <h4 id="Typora关联PicGo"><a href="#Typora关联PicGo" class="headerlink" title="Typora关联PicGo"></a>Typora关联PicGo</h4><p>现在我们可以将图片上传到PicGo上并得到图片地址，复制到Markdown中进行引用。然而Typora提供了更便捷的方案，在文件-偏好设置中按照下图进行设置：</p>
 <p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogimage-20230829141803242.png" alt="image-20230829141803242"></p>
 <p>Typora会在插入图片是自动帮我们完成上传，并调用得到的URL，现在我们的博客就可以自由的使用各种图片了~</p>
-<h3 id="设置主题"><a href="#设置主题" class="headerlink" title="设置主题"></a>设置主题</h3><p>Hexo默认的是landscape主题，一方面是不够美观，最重要的是缺少很多实用的插件以至于功能不全（例如评论区、站内搜索），因此我们需要重新设置一个更好的主题。Hexo的可选主题很多，这里用比较活跃的Next主题作为演示。Hexo的主题安装非常简单，在项目目录下运行</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/theme<span class="literal">-next</span>/hexo<span class="literal">-theme-next</span> themes/next</span><br></pre></td></tr></table></figure>
-
-<p>完成主题安装，再修改<code>_config.yml</code>里的theme设置即可</p>
 
     </div>
 
@@ -225,6 +285,10 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%96%B0%E6%89%8B%E6%8C%87%E5%8D%97/" rel="tag"># 新手指南</a>
+              <a href="/tags/%E8%B8%A9%E5%9D%91%E7%AC%94%E8%AE%B0/" rel="tag"># 踩坑笔记</a>
+          </div>
 
         
 
@@ -232,10 +296,13 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2023/08/29/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A21/" rel="prev" title="从零开始部署个人博客——第一步，部署博客网站">
-      <i class="fa fa-chevron-left"></i> 从零开始部署个人博客——第一步，部署博客网站
+    <a href="/2023/08/29/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A21/" rel="prev" title="从零开始搭建个人博客——第一步，部署博客网站">
+      <i class="fa fa-chevron-left"></i> 从零开始搭建个人博客——第一步，部署博客网站
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2023/08/29/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A23/" rel="next" title="从零开始部署个人博客——第三步，网站界面美化">
+      从零开始部署个人博客——第三步，网站界面美化 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -248,6 +315,7 @@
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -294,12 +362,14 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E5%8D%9A%E5%AE%A2%E5%9B%BE%E5%BA%8A"><span class="nav-number">1.</span> <span class="nav-text">设置博客图床</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B4%AD%E4%B9%B0%E5%AF%B9%E8%B1%A1%E5%82%A8%E5%AD%98%EF%BC%88OSS%EF%BC%89"><span class="nav-number">1.1.</span> <span class="nav-text">购买对象储存（OSS）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BAbucket"><span class="nav-number">1.2.</span> <span class="nav-text">创建bucket</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BAAccessKey"><span class="nav-number">1.3.</span> <span class="nav-text">创建AccessKey</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Picgo"><span class="nav-number">1.4.</span> <span class="nav-text">安装Picgo</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Typora%E5%85%B3%E8%81%94PicGo"><span class="nav-number">1.5.</span> <span class="nav-text">Typora关联PicGo</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E4%B8%BB%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">设置主题</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B4%AD%E4%B9%B0%E5%AF%B9%E8%B1%A1%E5%82%A8%E5%AD%98%EF%BC%88OSS%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">购买对象储存（OSS）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BAbucket"><span class="nav-number">2.</span> <span class="nav-text">创建bucket</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BAAccessKey"><span class="nav-number">3.</span> <span class="nav-text">创建AccessKey</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Picgo"><span class="nav-number">4.</span> <span class="nav-text">安装Picgo</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Typora%E5%85%B3%E8%81%94PicGo"><span class="nav-number">5.</span> <span class="nav-text">Typora关联PicGo</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="小忍qaq"
+      src="/images/shinobu.jpg">
   <p class="site-author-name" itemprop="name">小忍qaq</p>
   <div class="site-description" itemprop="description"></div>
 </div>
@@ -312,8 +382,28 @@
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
   </nav>
 </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/shinobu-qaq" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;shinobu-qaq" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/zhexipeng@zju.edu.cn" title="E-Mail → zhexipeng@zju.edu.cn"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
 
 
 
@@ -342,7 +432,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">小忍qaq</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  <div class="powered-by">
   </div>
 
         
@@ -368,7 +458,7 @@
 <script src="/js/motion.js"></script>
 
 
-<script src="/js/schemes/muse.js"></script>
+<script src="/js/schemes/pisces.js"></script>
 
 
 <script src="/js/next-boot.js"></script>
@@ -381,6 +471,10 @@
 
 
 
+  
+<script src="/js/local-search.js"></script>
+
+
 
 
 
@@ -396,5 +490,34 @@
 
   
 
-</body>
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'dM0GxK0iazM0kBJ3cKF8m81y-gzGzoHsz',
+      appKey     : '9VpII0QVI3UkVAdY04xVvTqf',
+      placeholder: "又是美好的一天！",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300,"hOffset":-15,"vOffset":-15},"mobile":{"show":false},"react":{"opacity":0.7},"log":false});</script></body>
 </html>

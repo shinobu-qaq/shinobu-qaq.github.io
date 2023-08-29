@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta property="og:type" content="website">
@@ -100,6 +100,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -119,11 +120,48 @@
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
     </header>
@@ -146,10 +184,10 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/29/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A22/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/29/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A23/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/shinobu.jpg">
       <meta itemprop="name" content="小忍qaq">
       <meta itemprop="description" content="">
     </span>
@@ -160,7 +198,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2023/08/29/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A22/" class="post-title-link" itemprop="url">从零开始部署个人博客——第二步，博客网站基本设置</a>
+            <a href="/2023/08/29/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A23/" class="post-title-link" itemprop="url">从零开始部署个人博客——第三步，网站界面美化</a>
         </h2>
 
         <div class="post-meta">
@@ -171,10 +209,12 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2023-08-29 10:59:34 / 修改时间：14:37:49" itemprop="dateCreated datePublished" datetime="2023-08-29T10:59:34+08:00">2023-08-29</time>
+              <time title="创建时间：2023-08-29 17:55:16 / 修改时间：18:00:57" itemprop="dateCreated datePublished" datetime="2023-08-29T17:55:16+08:00">2023-08-29</time>
             </span>
 
           
+  
+  
 
         </div>
       </header>
@@ -185,28 +225,92 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>在上一篇文章的指导下，我们已经有了自己的博客网站，当然大家都知道在写代码的时候搭好环境只是折腾的开始，接下来我们就要为我们的网站进行基本设置了。</p>
-<h3 id="设置博客图床"><a href="#设置博客图床" class="headerlink" title="设置博客图床"></a>设置博客图床</h3><p>所谓图文并茂，我们写博客当然离不开图片，众所周知Markdown是通过本地路径来添加、查找图片的，如果我们需要在网站上发布图片显然不能用这种方法。当然我们也可以把所有图片资源文件都放在Hexo文件夹下并同步到gitlab上，但这样我们的项目就会非常臃肿难以管理，因此我们选择服务器储存的方案。别担心，现在各大厂商都提供了对象储存的云服务器，价格相当便宜，下面我们就用阿里云打搭建图床。</p>
-<h4 id="购买对象储存（OSS）"><a href="#购买对象储存（OSS）" class="headerlink" title="购买对象储存（OSS）"></a>购买对象储存（OSS）</h4><p>登录阿里云网站，选择产品&gt;对象存储（OSS），在后续页面选择立即购买</p>
-<p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogtypora_blogimage-20230829113452168.png"></p>
-<p>按照如下设置进行购买，价格为9元&#x2F;年，还是相当便宜的</p>
-<p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829113653587.png"></p>
-<h4 id="创建bucket"><a href="#创建bucket" class="headerlink" title="创建bucket"></a>创建bucket</h4><p>完成购买后，进入工作台，选择创建OSS Bucket</p>
-<p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829113805296.png"></p>
-<p>按照如下选项设置bucket，注意读写权限必须为公共读</p>
-<p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829114105917.png"></p>
-<h4 id="创建AccessKey"><a href="#创建AccessKey" class="headerlink" title="创建AccessKey"></a>创建AccessKey</h4><p>左上角头像选择AccessKey管理，选择创建AccessKey，创建后<strong>本地保存得到的AccessKey ID和AccessKey Secret</strong></p>
-<h4 id="安装Picgo"><a href="#安装Picgo" class="headerlink" title="安装Picgo"></a>安装Picgo</h4><p>从github<a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/PicGo">Molunerfinn&#x2F;PicGo: :rocket:A simple &amp; beautiful tool for pictures uploading built by vue-cli-electron-builder (github.com)</a>下载并安装<strong>PicGo</strong>，这个软件可以帮助我们快速完成图片的服务器上传和url获取，安装后进入图床设置，按照如下选项进行设置</p>
-<p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogimage-20230829121024785.png" alt="image-20230829121024785"></p>
-<p>前三个选项都是之前在阿里云上设置过的内容，直接照搬即可；存储区域是可以在bucket的<strong>概览&gt;访问端口&gt;外网访问</strong>中看到注意只需要域名的前半部分；存储路径是图片上传bucket的特定定文件夹，可以方便我们管理不同文件。</p>
-<h4 id="Typora关联PicGo"><a href="#Typora关联PicGo" class="headerlink" title="Typora关联PicGo"></a>Typora关联PicGo</h4><p>现在我们可以将图片上传到PicGo上并得到图片地址，复制到Markdown中进行引用。然而Typora提供了更便捷的方案，在文件-偏好设置中按照下图进行设置：</p>
-<p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogimage-20230829141803242.png" alt="image-20230829141803242"></p>
-<p>Typora会在插入图片是自动帮我们完成上传，并调用得到的URL，现在我们的博客就可以自由的使用各种图片了~</p>
-<h3 id="设置主题"><a href="#设置主题" class="headerlink" title="设置主题"></a>设置主题</h3><p>Hexo默认的是landscape主题，一方面是不够美观，最重要的是缺少很多实用的插件以至于功能不全（例如评论区、站内搜索），因此我们需要重新设置一个更好的主题。Hexo的可选主题很多，这里用比较活跃的Next主题作为演示。Hexo的主题安装非常简单，在项目目录下运行</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/theme<span class="literal">-next</span>/hexo<span class="literal">-theme-next</span> themes/next</span><br></pre></td></tr></table></figure>
+          <p>在上一篇文章的指导下，我们已经有了自己的博客网站，只是写作当然没问题，但是大家都知道在写代码的时候搭好环境只是折腾的开始，接下来我们就要为我们的网站进行美化设置了。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/08/29/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A23/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
 
-<p>完成主题安装，再修改<code>_config.yml</code>里的theme设置即可</p>
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
 
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/29/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A22/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/shinobu.jpg">
+      <meta itemprop="name" content="小忍qaq">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小忍qaq的个人博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/08/29/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A22/" class="post-title-link" itemprop="url">从零开始部署个人博客——第二步，设置博客图床</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-08-29 10:59:34 / 修改时间：17:58:05" itemprop="dateCreated datePublished" datetime="2023-08-29T10:59:34+08:00">2023-08-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" itemprop="url" rel="index"><span itemprop="name">从零开始搭建个人博客</span></a>
+                </span>
+            </span>
+
+          
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>所谓图文并茂，我们写博客当然离不开图片，众所周知Markdown是通过本地路径来添加、查找图片的，如果我们需要在网站上发布图片显然不能用这种方法。当然我们也可以把所有图片资源文件都放在Hexo文件夹下并同步到gitlab上，但这样我们的项目就会非常臃肿难以管理，因此我们选择服务器储存的方案。别担心，现在各大厂商都提供了对象储存的云服务器，价格相当便宜，下面我们就用阿里云打搭建图床。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/08/29/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A22/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -228,7 +332,7 @@
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/29/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A21/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/shinobu.jpg">
       <meta itemprop="name" content="小忍qaq">
       <meta itemprop="description" content="">
     </span>
@@ -239,7 +343,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2023/08/29/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A21/" class="post-title-link" itemprop="url">从零开始部署个人博客——第一步，部署博客网站</a>
+            <a href="/2023/08/29/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A21/" class="post-title-link" itemprop="url">从零开始搭建个人博客——第一步，部署博客网站</a>
         </h2>
 
         <div class="post-meta">
@@ -250,10 +354,21 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2023-08-29 00:47:39 / 修改时间：16:01:33" itemprop="dateCreated datePublished" datetime="2023-08-29T00:47:39+08:00">2023-08-29</time>
+              <time title="创建时间：2023-08-29 00:47:39 / 修改时间：17:37:40" itemprop="dateCreated datePublished" datetime="2023-08-29T00:47:39+08:00">2023-08-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" itemprop="url" rel="index"><span itemprop="name">从零开始搭建个人博客</span></a>
+                </span>
             </span>
 
           
+  
+  
 
         </div>
       </header>
@@ -265,105 +380,14 @@
 
       
           <p>8.28日夜，深感不能再如此颓废下去的我决定趁最近比较闲做一些科研搬砖以外的能自我提升的事。仔细想想也无外乎运动健身和内容创作，于是就决定搭一个博客网站写些文章，主要是记录学习中的踩坑日常，之后也可能会分享科研方向的相关知识。既然是第一篇博客，不如就记录一下这个个人网站的搭建过程。</p>
-<p>搭建博客网站至少要完成以下功能：1. 建立可本地访问的个人网站 2. 将网站部署使得他人可以访问。下面我就简单写一下半个晚上速成的个人博客搭建过程。</p>
-<h3 id="创建本地网站"><a href="#创建本地网站" class="headerlink" title="创建本地网站"></a>创建本地网站</h3><p>从零开始建立一个网站无疑是一个非常复杂的工作，但当我们的目标仅仅是建立一个博客网站时这个问题就简单了许多——可以直接使用现有的博客框架。所谓博客框架，简单地说就是他人提供好了网站模板和生成工具，用户只需要撰写文章（例如Markdown文件）就可以直接生成静态网站。在这里我们选择比较主流的Hexo框架来搭建网站，这里主要参考官方网站<a target="_blank" rel="noopener" href="https://hexo.io/docs/index.html">Documentation | Hexo</a></p>
-<h4 id="Hexo安装"><a href="#Hexo安装" class="headerlink" title="Hexo安装"></a>Hexo安装</h4><p>Hexo依赖于两个程序，Node.js和Git。Node.js是JavaScript在浏览器环境下的解析器，在Windows环境下从官网<a target="_blank" rel="noopener" href="https://nodejs.org/en">Node.js (nodejs.org)</a>直接下载安装即可，Git则是部署代码不可缺少的工具，Git的安装稍微复杂一些，但在网上已经有非常详细的教程了，在此不在赘述。通过以下命令检查安装是否成功</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node --version</span><br><span class="line">git --version</span><br></pre></td></tr></table></figure>
-
-<p>Node.js会同时安装包管理工具npm，之后可以直接通过以下命令安装Hexo</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
-
-<p>至此完成Hexo的安装</p>
-<h4 id="Hexo创建网站"><a href="#Hexo创建网站" class="headerlink" title="Hexo创建网站"></a>Hexo创建网站</h4><p>我们需要创建一个文件夹作为网站项目内容的根目录（例如D:\Blog），在该目录下执行<code>hexo init</code>会自动生成一个网站项目</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── _config.yml</span><br><span class="line">├── package.json</span><br><span class="line">├── scaffolds</span><br><span class="line">├── source</span><br><span class="line">|   ├── _drafts</span><br><span class="line">|   └── _posts</span><br><span class="line">└── themes</span><br></pre></td></tr></table></figure>
-
-<p>我们一般需要修改<code>_config.yml</code>中的网站配置，具体每一项属性的作用可以在官网查找，目前采用中文文档中介绍的设置，如果有坑的话再更新记录。设置后通过如下命令来生成网站：</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo new &lt;title&gt; <span class="comment"># 创建新文章</span></span><br><span class="line">hexo generate <span class="comment"># 生成网站</span></span><br><span class="line">hexo server <span class="comment"># 创建本地服务器，默认为http://localhost:4000/</span></span><br></pre></td></tr></table></figure>
-
-<p>之后就可以在本地访问博客网站了，正常情况下可以看到如下的网站和文章：</p>
-<p>如果仅仅当作是个人日记，不需要在互联网上分享博客内容，至此即可。</p>
-<h3 id="Gitlab发布网站"><a href="#Gitlab发布网站" class="headerlink" title="Gitlab发布网站"></a>Gitlab发布网站</h3><p>刚刚我们已经有了一个个人博客网站，然而这个网站需要我们自己的设备作为本地服务器，并且只能通过本地端口域名访问。如果我们希望我们的博客能够在互联网环境中正常的访问浏览，我们需要将该网站进行部署（deploy）。幸运的是这一工作也不难，我们常常使用的GitHub就有GitHub Pages的功能，具体步骤如下：</p>
-<ol>
-<li>创建Github项目：在Gitlab上创建名为*<strong>username*.github.io</strong>的空项目，visibility设置为public。</li>
-<li>安装git deploy工具：<code>npm install hexo-deployer-git --save</code></li>
-<li>在<code>_config.yml</code>中设置deploy选项<br><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogimage-20230829160015520.png" alt="image-20230829160015520"><br>repo修改为自己的仓库</li>
-<li>使用<code>hexo d</code>部署网站，顺利的话此时已经可以正常访问个人网站，更进一步的我们还可以为网站购买域名，但无论如何现在你也有自己的博客网站了！</li>
-</ol>
-<p>到这里搭建好网站我大概花了两小时左右时间，反倒是写这篇文章的时间更长。但无论如何这也是个好头，以后争取每天写写文章产出一些内容，希望能坚持下来。</p>
-<h4 id="Todo"><a href="#Todo" class="headerlink" title="Todo"></a>Todo</h4><p>设置网站主题</p>
-<p>添加分类</p>
-<p>添加图床</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/29/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="小忍qaq">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小忍qaq的个人博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/08/29/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-08-29 00:06:08" itemprop="dateCreated datePublished" datetime="2023-08-29T00:06:08+08:00">2023-08-29</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/08/29/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A21/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -436,6 +460,8 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="小忍qaq"
+      src="/images/shinobu.jpg">
   <p class="site-author-name" itemprop="name">小忍qaq</p>
   <div class="site-description" itemprop="description"></div>
 </div>
@@ -448,8 +474,28 @@
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
   </nav>
 </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/shinobu-qaq" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;shinobu-qaq" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/zhexipeng@zju.edu.cn" title="E-Mail → zhexipeng@zju.edu.cn"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
 
 
 
@@ -478,7 +524,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">小忍qaq</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  <div class="powered-by">
   </div>
 
         
@@ -504,7 +550,7 @@
 <script src="/js/motion.js"></script>
 
 
-<script src="/js/schemes/muse.js"></script>
+<script src="/js/schemes/pisces.js"></script>
 
 
 <script src="/js/next-boot.js"></script>
@@ -517,6 +563,10 @@
 
 
 
+  
+<script src="/js/local-search.js"></script>
+
+
 
 
 
@@ -532,5 +582,34 @@
 
   
 
-</body>
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'dM0GxK0iazM0kBJ3cKF8m81y-gzGzoHsz',
+      appKey     : '9VpII0QVI3UkVAdY04xVvTqf',
+      placeholder: "又是美好的一天！",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300,"hOffset":-15,"vOffset":-15},"mobile":{"show":false},"react":{"opacity":0.7},"log":false});</script></body>
 </html>
