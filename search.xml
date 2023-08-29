@@ -1,36 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>从零开始部署个人博客——第二步，设置博客图床</title>
-    <url>/2023/08/29/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A22/</url>
-    <content><![CDATA[<p>所谓图文并茂，我们写博客当然离不开图片，众所周知Markdown是通过本地路径来添加、查找图片的，如果我们需要在网站上发布图片显然不能用这种方法。当然我们也可以把所有图片资源文件都放在Hexo文件夹下并同步到gitlab上，但这样我们的项目就会非常臃肿难以管理，因此我们选择服务器储存的方案。别担心，现在各大厂商都提供了对象储存的云服务器，价格相当便宜，下面我们就用阿里云打搭建图床。</p>
-<span id="more"></span>
-
-<h4 id="购买对象储存（OSS）"><a href="#购买对象储存（OSS）" class="headerlink" title="购买对象储存（OSS）"></a>购买对象储存（OSS）</h4><p>登录阿里云网站，选择产品&gt;对象存储（OSS），在后续页面选择立即购买</p>
-<p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogtypora_blogimage-20230829113452168.png"></p>
-<p>按照如下设置进行购买，价格为9元&#x2F;年，还是相当便宜的</p>
-<p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829113653587.png"></p>
-<h4 id="创建bucket"><a href="#创建bucket" class="headerlink" title="创建bucket"></a>创建bucket</h4><p>完成购买后，进入工作台，选择创建OSS Bucket</p>
-<p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829113805296.png"></p>
-<p>按照如下选项设置bucket，注意读写权限必须为公共读</p>
-<p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829114105917.png"></p>
-<h4 id="创建AccessKey"><a href="#创建AccessKey" class="headerlink" title="创建AccessKey"></a>创建AccessKey</h4><p>左上角头像选择AccessKey管理，选择创建AccessKey，创建后<strong>本地保存得到的AccessKey ID和AccessKey Secret</strong></p>
-<h4 id="安装Picgo"><a href="#安装Picgo" class="headerlink" title="安装Picgo"></a>安装Picgo</h4><p>从github<a href="https://github.com/Molunerfinn/PicGo">Molunerfinn&#x2F;PicGo: :rocket:A simple &amp; beautiful tool for pictures uploading built by vue-cli-electron-builder (github.com)</a>下载并安装<strong>PicGo</strong>，这个软件可以帮助我们快速完成图片的服务器上传和url获取，安装后进入图床设置，按照如下选项进行设置</p>
-<p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogimage-20230829121024785.png" alt="image-20230829121024785"></p>
-<p>前三个选项都是之前在阿里云上设置过的内容，直接照搬即可；存储区域是可以在bucket的<strong>概览&gt;访问端口&gt;外网访问</strong>中看到注意只需要域名的前半部分；存储路径是图片上传bucket的特定定文件夹，可以方便我们管理不同文件。</p>
-<h4 id="Typora关联PicGo"><a href="#Typora关联PicGo" class="headerlink" title="Typora关联PicGo"></a>Typora关联PicGo</h4><p>现在我们可以将图片上传到PicGo上并得到图片地址，复制到Markdown中进行引用。然而Typora提供了更便捷的方案，在文件-偏好设置中按照下图进行设置：</p>
-<p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogimage-20230829141803242.png" alt="image-20230829141803242"></p>
-<p>Typora会在插入图片是自动帮我们完成上传，并调用得到的URL，现在我们的博客就可以自由的使用各种图片了~</p>
-]]></content>
-      <categories>
-        <category>从零开始搭建个人博客</category>
-      </categories>
-      <tags>
-        <tag>新手指南</tag>
-        <tag>踩坑笔记</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>从零开始搭建个人博客——第一步，部署博客网站</title>
     <url>/2023/08/29/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A21/</url>
     <content><![CDATA[<p>8.28日夜，深感不能再如此颓废下去的我决定趁最近比较闲做一些科研搬砖以外的能自我提升的事。仔细想想也无外乎运动健身和内容创作，于是就决定搭一个博客网站写些文章，主要是记录学习中的踩坑日常，之后也可能会分享科研方向的相关知识。既然是第一篇博客，不如就记录一下这个个人网站的搭建过程。</p>
@@ -61,6 +31,36 @@
 <li>使用<code>hexo d</code>部署网站，顺利的话此时已经可以正常访问个人网站，更进一步的我们还可以为网站购买域名，但无论如何现在你也有自己的博客网站了！之后我们每次编辑只需要<code>hexo s -g</code>在本地生成并检查，确认ok后执行<code>hexo d</code>进行部署即可。</li>
 </ol>
 <p>到这里搭建好网站我大概花了两小时左右时间，反倒是写这篇文章的时间更长。但无论如何这也是个好头，以后争取每天写写文章产出一些内容，希望能坚持下来。</p>
+]]></content>
+      <categories>
+        <category>从零开始搭建个人博客</category>
+      </categories>
+      <tags>
+        <tag>新手指南</tag>
+        <tag>踩坑笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>从零开始部署个人博客——第二步，设置博客图床</title>
+    <url>/2023/08/29/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A22/</url>
+    <content><![CDATA[<p>所谓图文并茂，我们写博客当然离不开图片，众所周知Markdown是通过本地路径来添加、查找图片的，如果我们需要在网站上发布图片显然不能用这种方法。当然我们也可以把所有图片资源文件都放在Hexo文件夹下并同步到gitlab上，但这样我们的项目就会非常臃肿难以管理，因此我们选择服务器储存的方案。别担心，现在各大厂商都提供了对象储存的云服务器，价格相当便宜，下面我们就用阿里云打搭建图床。</p>
+<span id="more"></span>
+
+<h4 id="购买对象储存（OSS）"><a href="#购买对象储存（OSS）" class="headerlink" title="购买对象储存（OSS）"></a>购买对象储存（OSS）</h4><p>登录阿里云网站，选择产品&gt;对象存储（OSS），在后续页面选择立即购买</p>
+<p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogtypora_blogimage-20230829113452168.png"></p>
+<p>按照如下设置进行购买，价格为9元&#x2F;年，还是相当便宜的</p>
+<p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829113653587.png"></p>
+<h4 id="创建bucket"><a href="#创建bucket" class="headerlink" title="创建bucket"></a>创建bucket</h4><p>完成购买后，进入工作台，选择创建OSS Bucket</p>
+<p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829113805296.png"></p>
+<p>按照如下选项设置bucket，注意读写权限必须为公共读</p>
+<p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogtypora_blogimage-20230829114105917.png"></p>
+<h4 id="创建AccessKey"><a href="#创建AccessKey" class="headerlink" title="创建AccessKey"></a>创建AccessKey</h4><p>左上角头像选择AccessKey管理，选择创建AccessKey，创建后<strong>本地保存得到的AccessKey ID和AccessKey Secret</strong></p>
+<h4 id="安装Picgo"><a href="#安装Picgo" class="headerlink" title="安装Picgo"></a>安装Picgo</h4><p>从github<a href="https://github.com/Molunerfinn/PicGo">Molunerfinn&#x2F;PicGo: :rocket:A simple &amp; beautiful tool for pictures uploading built by vue-cli-electron-builder (github.com)</a>下载并安装<strong>PicGo</strong>，这个软件可以帮助我们快速完成图片的服务器上传和url获取，安装后进入图床设置，按照如下选项进行设置</p>
+<p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogimage-20230829121024785.png" alt="image-20230829121024785"></p>
+<p>前三个选项都是之前在阿里云上设置过的内容，直接照搬即可；存储区域是可以在bucket的<strong>概览&gt;访问端口&gt;外网访问</strong>中看到注意只需要域名的前半部分；存储路径是图片上传bucket的特定定文件夹，可以方便我们管理不同文件。</p>
+<h4 id="Typora关联PicGo"><a href="#Typora关联PicGo" class="headerlink" title="Typora关联PicGo"></a>Typora关联PicGo</h4><p>现在我们可以将图片上传到PicGo上并得到图片地址，复制到Markdown中进行引用。然而Typora提供了更便捷的方案，在文件-偏好设置中按照下图进行设置：</p>
+<p><img src="https://shinobu-blog.oss-cn-hangzhou.aliyuncs.com/typora_blogimage-20230829141803242.png" alt="image-20230829141803242"></p>
+<p>Typora会在插入图片是自动帮我们完成上传，并调用得到的URL，现在我们的博客就可以自由的使用各种图片了~</p>
 ]]></content>
       <categories>
         <category>从零开始搭建个人博客</category>
